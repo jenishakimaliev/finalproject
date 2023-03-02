@@ -1,8 +1,7 @@
-package kg.mega.finalproject.moldels;
+package kg.mega.finalproject.moldels.Dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,12 +12,8 @@ import java.util.Date;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-@Table(name = "tb_channel")
-public class Channel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class ChannelDto {
+    long id;
     @JsonProperty("channel_name")
     String channelName;
     @JsonProperty("created_date")
@@ -28,4 +23,6 @@ public class Channel {
     boolean channelStatus;
     @JsonProperty("logo_path")
     String logoPath;
+
+
 }

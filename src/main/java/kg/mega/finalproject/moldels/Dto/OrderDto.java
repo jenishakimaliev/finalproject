@@ -1,8 +1,7 @@
-package kg.mega.finalproject.moldels;
+package kg.mega.finalproject.moldels.Dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,13 +12,8 @@ import java.util.Date;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-@Table(name = "tb_order")
-public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @JsonProperty("created_date")
+public class OrderDto {
+    long id;
     @JsonFormat(pattern = "dd.MM.yyyy")
     Date createdDate;
     @JsonProperty("client_email")
@@ -30,15 +24,11 @@ public class Order {
     String clientPhone;
     @JsonProperty("order_status")
     boolean orderStatus;
-    @ManyToOne
-    @JoinColumn(name = "tb_channel")
-    Channel channel;
-    @ManyToOne
-    @JoinColumn(name = "tb_text_ad")
-    TextAd textAd;
-    @ManyToOne
-    @JoinColumn(name = "tb_banner_ad")
-    BannerAd bannerAd;
+    ChannelDto channelDto;
+    TextAdDto textAdDto;
+    BannerAdDto bannerAdDto;
     @JsonProperty("order_sum")
     double orderSum;
+
+
 }

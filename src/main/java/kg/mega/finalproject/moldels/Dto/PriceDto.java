@@ -1,8 +1,8 @@
-package kg.mega.finalproject.moldels;
+package kg.mega.finalproject.moldels.Dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
+import kg.mega.finalproject.moldels.Channel;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,15 +13,9 @@ import java.util.Date;
 @Getter
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-@Table(name = "tb_price")
-public class Price {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @ManyToOne
-    @JoinColumn(name = "tb_channel")
-    Channel channel;
+public class PriceDto {
+    long id;
+    ChannelDto channelDto;
     @JsonProperty("price_per_symbol")
     double pricePerSymbol;
     @JsonProperty("banner_price")
@@ -32,5 +26,4 @@ public class Price {
     @JsonProperty("end_date")
     @JsonFormat(pattern = "dd.MM.yyyy")
     Date endDate;
-
 }
